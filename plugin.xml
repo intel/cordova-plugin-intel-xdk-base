@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
-  id="com.intel.xdk.base"
+  id="intel.xdk.base"
   version="0.0.1">
   <name>Intel XDK Base</name>
   <description>Intel XDK Base Plugin</description>
