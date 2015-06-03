@@ -1,11 +1,115 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright 2015 Intel Corporation
+
+Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file 
+except in compliance with the License. You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software distributed under the 
+License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, 
+either express or implied. See the License for the specific language governing permissions 
+and limitations under the License
+-->
 
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
-  id="intel.xdk.base"
-  version="0.0.1">
-  <name>Intel XDK Base</name>
-  <description>Intel XDK Base Plugin</description>
-  <license>Apache 2.0</license>
-  <keywords>intel,xdk,base</keywords>
+    id="intel.xdk.base"
+    version="1.1.5">
+    <name>Intel XDK Base</name>
+    <description>Intel XDK Base Plugin</description>
+    <license>Apache 2.0</license>
+    <keywords>Intel XDK,intel.xdk,base</keywords>
+    <repo>https://github.com/01org/cordova-plugin-intel-xdk-base.git</repo>
+    <issue></issue>
+
+    <js-module src="www/base.js" name="base">
+        <merges target="intel.xdk" />
+    </js-module>
+
+    <js-module src="www/device.js" name="base-device">
+        <merges target="intel.xdk.device" />
+    </js-module>
+
+    <asset src="www/intelxdk.js" target="intelxdk.js" />
+    <asset src="www/xhr.js" target="xhr.js" />
+    
+    <!-- android -->
+    <platform name="android">
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="IntelXDKBase" >
+                <param name="android-package" value="com.intel.xdk.base.Base"/>
+            </feature>
+        </config-file>
+
+        <config-file target="AndroidManifest.xml" parent="/*">
+            <supports-screens
+                android:xlargeScreens="true"
+                android:largeScreens="true"
+                android:normalScreens="true"
+                android:smallScreens="true"
+                android:anyDensity="true" 
+            />
+        </config-file>
+        <!--uses-permission android:name="android.permission." /-->
+
+        <source-file src="src/android/Base.java" target-dir="src/com/intel/xdk/base" />
+        <source-file src="src/android/splash.xml" target-dir="res/layout" />
+        <source-file src="src/android/splash_ls.xml" target-dir="res/layout" />
+        <source-file src="src/android/splash_tablet.xml" target-dir="res/layout" />
+        <source-file src="src/android/splash_tablet_ls.xml" target-dir="res/layout" />
+    </platform>
+
+    <!-- Windows Phone 8 -->
+    <platform name="wp8">
+        <config-file target="config.xml" parent="/*">
+            <feature name="IntelXDKBase">
+                <param name="wp-package" value="IntelXDKBase"/>
+            </feature>
+        </config-file>
+
+        <config-file target="Properties/WMAppManifest.xml" parent="/Deployment/App/Capabilities">
+            <Capability Name="ID_CAP_PROXIMITY" />
+            <Capability Name="ID_CAP_LOCATION" />
+        </config-file>
+
+        <source-file src="src/wp8/Base.cs" />
+
+        <js-module src="www/wp8/base.js" name="base-wp8">
+            <merges target="intel.xdk" />
+        </js-module>
+    </platform>
+
+    <!-- windows8 -->
+    <platform name="windows8">
+        <config-file target="package.appxmanifest" parent="/Package/Capabilities">
+            <!--<DeviceCapability Name="location" />-->
+        </config-file>
+
+        <js-module src="src/windows8/baseProxy.js" name="BaseProxy">
+            <merges target="" />
+        </js-module>
+
+        <js-module src="src/windows8/alert.js" name="winAlert">
+            <merges target="" />
+        </js-module>
+
+        <js-module src="www/windows8/base.js" name="base-windows8">
+            <merges target="intel.xdk" />
+        </js-module>
+   </platform>
+
+    <!-- iOS -->
+    <platform name="ios">
+
+        <config-file target="config.xml" parent="/*">
+            <feature name="IntelXDKBase">
+                <param name="ios-package" value="XDKBase" />
+            </feature>
+        </config-file>
+        
+        <source-file src="src/ios/XDKBase.m" />
+
+    </platform>
 
 </plugin>
