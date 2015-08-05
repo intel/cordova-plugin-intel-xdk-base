@@ -80,6 +80,33 @@ and limitations under the License
         </js-module>
     </platform>
 
+    <!-- windows -->
+    <platform name="windows">
+        <config-file target="package.appxmanifest" parent="/Package/Capabilities">
+            <!--<DeviceCapability Name="location" />-->
+        </config-file>
+
+        <js-module src="src/windows8/baseProxy.js" name="BaseProxy">
+            <merges target="" />
+        </js-module>
+
+        <js-module src="src/windows8/alert.js" name="winAlert">
+            <merges target="" />
+        </js-module>
+
+        <js-module src="src/windows8/alertAppPreviewProxy.js" name="WinAlertProxy">
+            <merges target="" />
+        </js-module>
+
+        <js-module src="www/windows8/base.js" name="base-windows8">
+            <merges target="intel.xdk" />
+        </js-module>
+
+        <source-file src="www/windows8/splash_screen.jpg" target-dir="" />
+        <source-file src="www/windows8/splash_screen_landscape_tablet.jpg" target-dir="" />
+        <source-file src="www/windows8/splash_screen_tablet.jpg" target-dir="" />
+   </platform>
+
     <!-- windows8 -->
     <platform name="windows8">
         <config-file target="package.appxmanifest" parent="/Package/Capabilities">
