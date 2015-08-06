@@ -37,7 +37,7 @@ and limitations under the License
 
         showSplashScreen: function(successCallback, errorCallback, params) {
             var me = module.exports;
-            var imgPath = "/www/intel.xdk.base/windows8/";
+            var imgPath = "ms-appx:///plugins/com.intel.xdk.base/";
 
 
             try {
