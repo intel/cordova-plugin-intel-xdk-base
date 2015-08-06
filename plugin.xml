@@ -94,10 +94,6 @@ and limitations under the License
             <merges target="" />
         </js-module>
 
-        <js-module src="src/windows8/alertAppPreviewProxy.js" name="WinAlertProxy">
-            <merges target="" />
-        </js-module>
-
         <js-module src="www/windows8/base.js" name="base-windows8">
             <merges target="intel.xdk" />
         </js-module>
