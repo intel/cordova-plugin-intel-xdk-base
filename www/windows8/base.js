@@ -1,3 +1,4 @@
+
 /*
 Copyright 2015 Intel Corporation
 
@@ -19,7 +20,25 @@ var exec = require('cordova/exec');
  */
 
 module.exports = {
+};
 
-	iswin8: true,
+	//  Single test now for both platforms to determine which OS is currently running.
+    function onDeviceReady() {
+        if (navigator.appVersion.indexOf("Windows Phone 8.1;") !== -1) {
+            // windows phone 8.1 + Mobile IE 11
+            intel.xdk.iswin8 = false;
+            intel.xdk.iswp8 = true;
+        } else if (navigator.appVersion.indexOf("MSAppHost/2.0;") !== -1) {
+            // windows 8.1 + IE 11
+            intel.xdk.iswin8 = true;
+            intel.xdk.iswp8 = false;
+        } else {
+            // windows 8.0 + IE 10
+            intel.xdk.iswin8 = true;
+            intel.xdk.iswp8 = false;
+        }
+    }
+    var evt = "deviceReady";
+    document.addEventListener(evt, onDeviceReady, false);
 
-}
+
